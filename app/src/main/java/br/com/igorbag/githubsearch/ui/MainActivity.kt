@@ -2,8 +2,10 @@ package br.com.igorbag.githubsearch.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnConfirmar: Button
     lateinit var listaRepositories: RecyclerView
     lateinit var githubApi: GitHubService
+    lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,19 @@ class MainActivity : AppCompatActivity() {
         setupListeners()
         setupRetrofit()
         showUserName()
+        status()
 
+    }
+
+    private fun status() {
+        progressBar = findViewById(R.id.pb_progress)
+    }
+    private fun showLoading() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        progressBar.visibility = View.GONE
     }
 
     // Metodo responsavel por realizar o setup da view e recuperar os Ids do layout
@@ -96,11 +111,13 @@ class MainActivity : AppCompatActivity() {
         // TODO 6 - realizar a implementacao do callback do retrofit e chamar o metodo setupAdapter se retornar os dados com sucesso
 
         val username = nomeUsuario.text.toString()
+        showLoading()
+
         githubApi.getAllRepositoriesByUser(username).enqueue(object : Callback<List<Repository>>{
             override fun onResponse(
                 call: Call<List<Repository>>,
                 response: Response<List<Repository>>
-            ) {
+            ) { hideLoading()
                 if(response.isSuccessful){
                     val repositories = response.body()
                     repositories?.let { 
@@ -113,6 +130,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
                 val errorMessage = "Falha na chamada à API: ${t.message}"
+                hideLoading()
             }
         } )
                }
