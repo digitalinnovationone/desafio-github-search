@@ -23,7 +23,7 @@
         android:layout_margin="16dp"
         android:ems="10"
         android:hint="@string/nome_usuario"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:maxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
