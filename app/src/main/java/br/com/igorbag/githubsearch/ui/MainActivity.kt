@@ -130,8 +130,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    // Metodo responsavel por compartilhar o link do repositorio selecionado
-    //
-
 }
