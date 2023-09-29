@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">GitHubSearch</string>
+  <string name="user_name">Nome do Usuário</string>
+  <string name="confirm">Confirmar</string>
+  <string name="saved_name">saved_name</string>
+</resources>
