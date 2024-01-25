@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_car"
+        android:id="@+id/cvRepo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_card_content"
+            android:id="@+id/cl_cardContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/iv_favorite"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivFavorite"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="16dp"
@@ -35,8 +35,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_preco"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRepoName"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
